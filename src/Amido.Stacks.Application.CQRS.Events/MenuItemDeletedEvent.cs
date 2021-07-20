@@ -4,9 +4,9 @@ using Amido.Stacks.Core.Operations;
 
 namespace Amido.Stacks.Application.CQRS.Events
 {
-	public class MenuItemDeleted : IApplicationEvent
+	public class MenuItemDeletedEvent : IApplicationEvent
 	{
-		public MenuItemDeleted(IOperationContext context, Guid menuId, Guid categoryId, Guid menuItemId)
+		public MenuItemDeletedEvent(IOperationContext context, Guid menuId, Guid categoryId, Guid menuItemId)
 		{
 			OperationCode = context.OperationCode;
 			CorrelationId = context.CorrelationId;
