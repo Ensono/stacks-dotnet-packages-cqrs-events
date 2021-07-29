@@ -1,11 +1,22 @@
 ﻿using System;
 using Amido.Stacks.Application.CQRS.ApplicationEvents;
 using Amido.Stacks.Core.Operations;
+using Newtonsoft.Json;
 
 namespace Amido.Stacks.Application.CQRS.Events
 {
 	public class MenuItemCreatedEvent : IApplicationEvent
 	{
+		[JsonConstructor]
+		public MenuItemCreatedEvent(int operationCode, Guid correlationId, Guid menuId, Guid categoryId, Guid menuItemId)
+		{
+			OperationCode = operationCode;
+			CorrelationId = correlationId;
+			MenuId = menuId;
+			CategoryId = categoryId;
+			MenuItemId = menuItemId;
+		}
+
 		public MenuItemCreatedEvent(IOperationContext context, Guid menuId, Guid categoryId, Guid menuItemId)
 		{
 			OperationCode = context.OperationCode;

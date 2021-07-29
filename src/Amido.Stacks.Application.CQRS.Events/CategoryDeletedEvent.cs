@@ -1,11 +1,21 @@
 using System;
 using Amido.Stacks.Application.CQRS.ApplicationEvents;
 using Amido.Stacks.Core.Operations;
+using Newtonsoft.Json;
 
 namespace Amido.Stacks.Application.CQRS.Events
 {
 	public class CategoryDeletedEvent : IApplicationEvent
 	{
+		[JsonConstructor]
+		public CategoryDeletedEvent(int operationCode, Guid correlationId, Guid menuId, Guid categoryId)
+		{
+			OperationCode = operationCode;
+			CorrelationId = correlationId;
+			MenuId = menuId;
+			CategoryId = categoryId;
+		}
+
 		public CategoryDeletedEvent(IOperationContext context, Guid menuId, Guid categoryId)
 		{
 			OperationCode = context.OperationCode;
@@ -13,7 +23,6 @@ namespace Amido.Stacks.Application.CQRS.Events
 			MenuId = menuId;
 			CategoryId = categoryId;
 		}
-
 
 		public int EventCode => (int)Enums.EventCode.CategoryDeleted;
 
