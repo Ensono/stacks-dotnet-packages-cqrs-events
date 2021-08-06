@@ -15,6 +15,9 @@ namespace Amido.Stacks.Application.CQRS.Events.Enums
 		// Items Operations
 		MenuItemCreated = 301,
 		MenuItemUpdated = 302,
-		MenuItemDeleted = 303
+		MenuItemDeleted = 303,
+
+		// CosmosDB change feed operations
+		EntityUpdated = 999
 	}
 }
